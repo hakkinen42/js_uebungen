@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container{
+      margin: 0 auto;
+      width: 100%;
+      border:3px solid red;
+      padding:50px;
+
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // DOM'a zuklendiginde çalışacak işlevi tanımlayalım
+    function yuklenmeFonksiyonu() {
+      
+      // Dikdörtgenlerin oluşturulacağı toplam adet
+      const dikdortgenAdeti = 10;
+  
+      // Başlangıç boyutu ve boyut artışı
+      const baslangicBoyutu = 150;
+      const boyutArtisi = 100;
+      const en = 150;
+      const container = document.getElementById('container');
+  
+      // Dikdörtgenleri oluştur
+      let boyut = baslangicBoyutu;
+      for (let i = 0; i < dikdortgenAdeti; i++) {
+        // Rastgele arka plan rengi oluştur
+        const r = Math.floor(Math.random() * 256); // 0-255 arasında bir rastgele kırmızı değeri
+      const g = Math.floor(Math.random() * 256); // 0-255 arasında bir rastgele yeşil değeri
+      const b = Math.floor(Math.random() * 256); // 0-255 arasında bir rastgele mavi değeri
+
+  
+        // Dikdörtgeni oluştur
+        const dikdortgen = document.createElement("div");
+        dikdortgen.style.width = en + "px";
+        dikdortgen.style.height = boyut + "px";
+        dikdortgen.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        dikdortgen.style.marginTop = "100px";
+        container.style.display = "flex";
+        container.style.justifyContent = "space-around";
+        container.style.alignItems = "flex-end";
+        
+        // Alan hesapla ve altına yaz
+        const alan = (boyut*en);
+        const alanMetni = document.createTextNode("Alan: " + alan + " pixel");
+        dikdortgen.appendChild(alanMetni);
+  
+        // Dikdörtgeni ekrana ekle
+        container.appendChild(dikdortgen);
+  
+        // Boyutu artır
+        boyut += boyutArtisi;
+      }
+    }
+  
+    // DOM yuklendiğinde yuklenmeFonksiyonu'nu çağır
+    yuklenmeFonksiyonu();
+  });
+  
+  </script>
+  
+</body>
+</html>
